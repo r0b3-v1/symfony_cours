@@ -1,6 +1,6 @@
-# home:
-#    path: /
-#    controller: App\Controller\HomeController::home
+home2:
+   path: /
+   controller: App\Controller\HomeController::home
 
 # app_lucky_number:
 #     path: /lucky/number
