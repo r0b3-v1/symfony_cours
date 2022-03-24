@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,17 @@ class Contact
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateNaissance;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="contact", orphanRemoval=true)
+     */
+    private $adresses;
+
+    public function __construct()
+    {
+        $this->foos = new ArrayCollection();
+        $this->adresses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +99,44 @@ class Contact
     public function setDateNaissance(?\DateTimeInterface $dateNaissance): self
     {
         $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Foo>
+     */
+    public function getFoos(): Collection
+    {
+        return $this->foos;
+    }
+
+    /**
+     * @return Collection<int, Adresse>
+     */
+    public function getAdresses(): Collection
+    {
+        return $this->adresses;
+    }
+
+    public function addAdress(Adresse $adress): self
+    {
+        if (!$this->adresses->contains($adress)) {
+            $this->adresses[] = $adress;
+            $adress->setIdContact($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdress(Adresse $adress): self
+    {
+        if ($this->adresses->removeElement($adress)) {
+            // set the owning side to null (unless already changed)
+            if ($adress->getIdContact() === $this) {
+                $adress->setIdContact(null);
+            }
+        }
 
         return $this;
     }

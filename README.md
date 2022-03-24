@@ -3,7 +3,7 @@ This file will compile notes regarding Symfony 5.4
 
 ## Install a Symfony project
 You'll first need **Composer** and have php installed on your computer. Check your environment variables to make sure that the php command is recognized.
-**You will need php 7.2.5 or higher to run a Symfony 5.4. project**
+ `**You will need php 7.2.5 or higher to run a Symfony 5.4. project**`
 Once this is done, go to your server folder then open the console in it.
 
 Type `composer create-project symfony/skeleton:"^5.4" your_project_name`
@@ -28,7 +28,7 @@ Alternatively, you can use the default localhost/your_project/ to test
 Controllers's main purpose is to implement the logic of your code and render the views.
 2 ways to do so : 
 
-### The command line `(prefered way)`
+### The command line ` (prefered way) `
 In the console, position yourself at the root of your project then type :
 
     php bin/console make:controller
@@ -51,7 +51,7 @@ The **views** you will render are located in the **templates** folder. Those are
 ## `Routing`
 
 To access the controller, you need to specify a route. 2 ways to do so:
-### Use annotations `(prefered way)`
+### Use annotations ` (prefered way) `
 
     /**
     * @Route("/home", name="home")
@@ -62,13 +62,17 @@ To access the controller, you need to specify a route. 2 ways to do so:
 First param : the route the user will have to access via the url, second param : the name of the route you'll be able to use in redirections.
 You will have to import the Route class in order to use annotations.
 
-    use Symfony\Component\Routing\Annotation\Route;
+       use Symfony\Component\Routing\Annotation\Route;
+
 
 **You can add `parameters` to the route url**
 
     /**
     * @Route("/jeux/{id}", name="app_jeux_details")
     */
+You will have to add the parameters in the function arguments
+
+
 ### Change the routes.yaml file
 Go to **config/routes.yaml** then type in the new route for the controller and its method
 
@@ -107,7 +111,7 @@ This can be done manually however the prefered method is to use the command line
 This will create a new Entity in the Entity folder representing a table in the database containing the columns you will provide.
 
 ### Add relations between entities
-
+Use the `php bin/console make:entity` to create a relation. In the type proposition, type relation to add the desired relation.
 
 ### Migrations
 Migrations are used to update the database accordingly to your entities. Creating a migration is like committing your entities.
@@ -119,3 +123,7 @@ Then, to execute the migration :
 
     php bin/console doctrine:migrations:migrate
 The database will be modified accordingly to the last migration created
+
+## `Twig`
+
+
