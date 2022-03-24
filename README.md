@@ -3,7 +3,7 @@ This file will compile notes regarding Symfony 5.4
 
 ## Install a Symfony project
 You'll first need **Composer** and have php installed on your computer. Check your environment variables to make sure that the php command is recognized.
- `**You will need php 7.2.5 or higher to run a Symfony 5.4. project**`
+ <font color=#F0C050>**You will need php 7.2.5 or higher to run a Symfony 5.4. project**</font>
 Once this is done, go to your server folder then open the console in it.
 
 Type `composer create-project symfony/skeleton:"^5.4" your_project_name`
@@ -24,11 +24,11 @@ This command allows to run a local server. Go to localhost:3000/ to test
 
 Alternatively, you can use the default localhost/your_project/ to test
 
-## Create a `Controller`
+## Create a <font color=#3d99e0>Controller</font>
 Controllers's main purpose is to implement the logic of your code and render the views.
 2 ways to do so : 
 
-### The command line ` (prefered way) `
+### The command line <font color=green> (prefered way) </font>
 In the console, position yourself at the root of your project then type :
 
     php bin/console make:controller
@@ -48,10 +48,10 @@ Several ways to do so :
 
 The **views** you will render are located in the **templates** folder. Those are twig files. 
 
-## `Routing`
+## <font color=#3d99e0>Routing</font>
 
 To access the controller, you need to specify a route. 2 ways to do so:
-### Use annotations ` (prefered way) `
+### Use annotations <font color=green> (prefered way) </font>
 
     /**
     * @Route("/home", name="home")
@@ -84,7 +84,7 @@ Go to **config/routes.yaml** then type in the new route for the controller and i
 If you put the same route in an annotation and in the routes.yaml file, the one in the file will be the one rendered, and the route of the annotation will be overwritten (ie : the url defined in the annotation won't be relevant anymore).
 You can use the yaml file to make redirections to existing routes without needing to write new Controllers.
 
-## The `Model`
+## The <font color=#3d99e0>Model</font>
 
 ### configure the DB
 The model classes will be created in the Entity folder
@@ -124,6 +124,6 @@ Then, to execute the migration :
     php bin/console doctrine:migrations:migrate
 The database will be modified accordingly to the last migration created
 
-## `Twig`
+## <font color=#3d99e0>Twig</font>
 
 
