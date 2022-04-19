@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ContactRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Webmozart\Assert\Assert;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ContactRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints\Regex;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
@@ -31,6 +33,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\Regex("/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/")
      */
     private $numTel;
 
@@ -40,7 +43,7 @@ class Contact
     private $dateNaissance;
 
     /**
-     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="contact", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Adresse::class, mappedBy="contact", orphanRemoval=true, fetch="EAGER")
      */
     private $adresses;
 

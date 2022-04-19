@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LivreController!
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<ul>
+			{% for livre in livres %}
+				<li>titre :
+					{{livre.titre}}
+					, auteur
+					{{livre.auteur}}, date de parution :
+					{{livre.dateDeParution|date("m/d/Y")}}
+				</li>
+			{% endfor %}
+		</ul>
+		<a href="{{path('ajouter_livre')}}" class="btn btn-primary mt-3">Ajouter un livre</a>
+	</div>
+{% endblock %}

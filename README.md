@@ -112,6 +112,7 @@ This will create a new Entity in the Entity folder representing a table in the d
 
 ### Add relations between entities
 Use the `php bin/console make:entity` to create a relation. In the type proposition, type relation to add the desired relation.
+If you want doctrine to get all the related entities to an entity, you have to add the parameter `fetch="EAGER"` in the annotation of the attribute linking this entity to the other
 
 ### Migrations
 Migrations are used to update the database accordingly to your entities. Creating a migration is like committing your entities.

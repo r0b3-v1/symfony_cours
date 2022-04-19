@@ -1,0 +1,25 @@
+{% include 'header.html.twig' %}
+
+<div class="container mt-5">
+	<div class="row">
+
+		{% for contact in contacts %}
+
+			<div class="card mx-3" style="width: 18rem;">
+				<img src="..." class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">{{contact.prenom}} {{contact.nom}}</h5>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<a href="{{ path('details-contact',{'id' : contact.id}) }}" class="btn btn-primary">Voir les détails</a>
+					<a href="{{ path('update-contact',{'id' : contact.id}) }}" class="btn btn-warning">Modifier</a>
+					<a href="{{ path('delete-contact',{'id' : contact.id}) }}" class="btn btn-danger" onclick="return confirm('vraiment?')">Supprimer</a>
+				</div>
+			</div>
+
+
+		{% endfor %}
+	</div>
+</div>
+
+{% include 'footer.html.twig' %}
+
